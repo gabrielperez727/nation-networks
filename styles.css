@@ -17,9 +17,14 @@ svg path{
     display: none; /* Initially hidden */
     position: absolute;
     background: white;
-    border: 1px solid #ccc;
+    border: 1px solid red;
     padding: 10px;
     border-radius: 5px;
     z-index: 1000; /* Ensure it's on top */
     transition: opacity 0.2s; /* Smooth transition */
+    overflow: auto; /* Enable scrolling */
+    max-height: 200px; /* Set a maximum height */
+    width: 200px; /* Set a fixed or max width */
+    
 }
+
