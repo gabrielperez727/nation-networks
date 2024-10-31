@@ -16,12 +16,12 @@ svg path{
 #infoBox {
     display: none; /* Initially hidden */
     position: absolute;
-    background: white;
+    background: rgba(255, 255, 255, 0.839);
     padding: 10px;
     border-radius: 5px;
     z-index: 1000; /* Ensure it's on top */
     transition: opacity 0.2s; /* Smooth transition */
-    max-height: 200px; /* Set a maximum height */
+    max-height: none; /* Set a maximum height */
     max-width: 300px; /* Set a max width to prevent it from being too wide */
     width: auto; /* Allow it to adjust based on content */
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); /* Add some shadow for depth */
@@ -29,6 +29,50 @@ svg path{
     display: flex;
     flex-direction: column; /* Stack elements vertically */
 }
+
+
+
+.accordion .accordion-content {
+    overflow: hidden;
+}
+
+.accordion-content .description {
+    max-height: 0; /* Start with max-height of 0 to hide it */
+    transition: max-height 0.2s ease-in-out; /* Smooth transition */
+    overflow: hidden; /* Prevent overflow when collapsed */
+}
+
+.accordion-content.expanded .description {
+   max-height: 500px;/* Set a max height when expanded; adjust as necessary */
+}
+.oilHeader {
+    display: flex;
+    padding: 5px;
+    background-color: palegoldenrod;
+    border-radius: 5px;
+    
+}
+.title {
+    
+    font-size: 20px;
+    margin-top: 10px;
+}
+
+.imports, .exports {
+    text-align: center;
+    
+    
+    padding: 5px;
+}
+
+.flag {
+    width: 80px;
+}
+
+.flags {
+    padding: 5px;
+}
+
 
 /* Optional: Add a class for scrolling when content exceeds max height */
 .scrollable {

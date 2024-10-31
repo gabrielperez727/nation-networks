@@ -23,7 +23,32 @@ const gdp = {
     "ZA": "399,000,000,000"      // South Africa
 };
 
+const accordionContent = document.querySelectorAll(".accordion-content");
+accordionContent.forEach((item) => {
+    const header = item.querySelector("header");
+    header.addEventListener("click", () => {
+        item.classList.toggle("open");
+        const description = item.querySelector(".description");
+        if (item.classList.contains("open")) {
+            description.style.maxHeight = `${description.scrollHeight}px`; // Expand to full height
+        } else {
+            description.style.maxHeight = '0px'; // Collapse
+        }
+    });
+});
 
+
+const countries = {
+    BR: {
+        imports: ["sa", 'us', 'dz'],
+        exports: ["cn", 'us', 'es']
+    },
+    CN: {
+        imports: ["sa", 'ru', 'iq'],
+        exports: ["my", 'mm', 'kr']
+    }
+
+}
 
 
 
@@ -36,10 +61,23 @@ document.querySelectorAll(".allPath").forEach(e => {
 
         const countryName = e.getAttribute("name"); // Get the country name
         const countryCode = e.id; 
-        const countryInfo = `<strong>GDP</strong>: $${gdp[countryCode]}`; // Replace with actual data
-        
+        const countryInfo = `<strong>GDP</strong>: $${gdp[countryCode]}`; 
+       
+        const importCodes = countries[countryCode]?.imports || [];
+        const exportCodes = countries[countryCode]?.exports || [];
 
-        // Set the content of the info box
+       
+        const importFlagsHTML = importCodes.map(importCode => 
+            `<img class="flag" src="./flags/${importCode}.png" alt="${importCode.toUpperCase()} Flag">`
+        ).join(' '); 
+
+        const exportFlagsHTML = exportCodes.map(exportCode => 
+            `<img class="flag" src="./flags/${exportCode}.png" alt="${exportCode.toUpperCase()} Flag">`
+        ).join(' '); 
+        
+       
+        document.querySelector(".importFlags").innerHTML = importFlagsHTML;
+        document.querySelector(".exportFlags").innerHTML = exportFlagsHTML;
         document.getElementById("countryName").innerText = countryName;
         document.getElementById("countryInfo").innerHTML = countryInfo;
 
