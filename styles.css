@@ -42,15 +42,37 @@ svg path{
     overflow: hidden; /* Prevent overflow when collapsed */
 }
 
-.accordion-content.expanded .description {
-   max-height: 500px;/* Set a max height when expanded; adjust as necessary */
+.accordion-content .gasdescription {
+    max-height: 0; /* Start with max-height of 0 to hide it */
+    transition: max-height 0.2s ease-in-out; /* Smooth transition */
+    overflow: hidden; /* Prevent overflow when collapsed */
 }
+
+.accordion-content.expanded .description {
+   max-height: none;/* Set a max height when expanded; adjust as necessary */
+}
+
+.accordion-content.expanded .gasdescription {
+    max-height: none;/* Set a max height when expanded; adjust as necessary */
+ }
 .oilHeader {
     display: flex;
     padding: 5px;
     background-color: palegoldenrod;
     border-radius: 5px;
     
+}
+
+.accordion-content.open .description {
+    max-height: none; /* Set a max height when expanded */
+ }
+ 
+ .accordion-content.open .gasdescription {
+     max-height: none; /* Set a max height when expanded */
+ }
+
+.gasHeader {
+    background-color: #bddff4;
 }
 .title {
     
@@ -72,6 +94,7 @@ svg path{
 .flags {
     padding: 5px;
 }
+
 
 
 /* Optional: Add a class for scrolling when content exceeds max height */

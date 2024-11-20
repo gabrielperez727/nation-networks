@@ -24,31 +24,36 @@ const gdp = {
 };
 
 const accordionContent = document.querySelectorAll(".accordion-content");
+
 accordionContent.forEach((item) => {
-    const header = item.querySelector("header");
-    header.addEventListener("click", () => {
+    const oilHeader = item.querySelector(".oilHeader");
+    const gasHeader = item.querySelector(".gasHeader");
+
+    // Handle click for oilHeader
+    oilHeader.addEventListener("click", () => {
         item.classList.toggle("open");
-        const description = item.querySelector(".description");
+        const oilDescription = item.querySelector(".description");
         if (item.classList.contains("open")) {
-            description.style.maxHeight = `${description.scrollHeight}px`; // Expand to full height
+            oilDescription.style.maxHeight = `${oilDescription.scrollHeight}px`; // Expand to full height
         } else {
-            description.style.maxHeight = '0px'; // Collapse
+            oilDescription.style.maxHeight = '0px'; // Collapse
+        }
+    });
+
+    // Handle click for gasHeader
+    gasHeader.addEventListener("click", () => {
+        item.classList.toggle("open");
+        const gasDescription = item.querySelector(".gasdescription");
+        if (item.classList.contains("open")) {
+            gasDescription.style.maxHeight = `${gasDescription.scrollHeight}px`; // Expand to full height
+        } else {
+            gasDescription.style.maxHeight = '0px'; // Collapse
         }
     });
 });
 
 
-const countries = {
-    BR: {
-        imports: ["sa", 'us', 'dz'],
-        exports: ["cn", 'us', 'es']
-    },
-    CN: {
-        imports: ["sa", 'ru', 'iq'],
-        exports: ["my", 'mm', 'kr']
-    }
 
-}
 
 
 
@@ -65,6 +70,15 @@ document.querySelectorAll(".allPath").forEach(e => {
        
         const importCodes = countries[countryCode]?.imports || [];
         const exportCodes = countries[countryCode]?.exports || [];
+        const gasImport = countries[countryCode]?.gasImports || [];
+        const identity = countries[countryCode]?.identity || [];
+        const identity1 = countries[countryCode]?.identity1 || [];
+        const identity2 = countries[countryCode]?.identity2 || [];
+        const identity3 = countries[countryCode]?.identity3 || [];
+        const identityMajors = countries[countryCode]?.identityMajors || [];
+        const identityMajors2 = countries[countryCode]?.identityMajors2 || [];
+        const identityMajors3 = countries[countryCode]?.identityMajors3 || [];
+
 
        
         const importFlagsHTML = importCodes.map(importCode => 
@@ -74,12 +88,52 @@ document.querySelectorAll(".allPath").forEach(e => {
         const exportFlagsHTML = exportCodes.map(exportCode => 
             `<img class="flag" src="./flags/${exportCode}.png" alt="${exportCode.toUpperCase()} Flag">`
         ).join(' '); 
+
+        const importGasFlagsHTML = gasImport.map(gasImport => 
+            `<img class="flag" src="./flags/${gasImport}.png" alt="${gasImport.toUpperCase()} Flag">`
+        ).join(' '); 
+
+        const identity1FlagsHTML = identity1.map(identity1 => 
+            `<img class="flag" src="./flags/${identity1}.png" alt="${identity1.toUpperCase()} Flag">`
+        ).join(' '); 
+
+        const identity2FlagsHTML = identity2.map(identity2 => 
+            `<img class="flag" src="./flags/${identity2}.png" alt="${identity2.toUpperCase()} Flag">`
+        ).join(' '); 
+
+        const identity3FlagsHTML = identity3.map(identity3 => 
+            `<img class="flag" src="./flags/${identity3}.png" alt="${identity3.toUpperCase()} Flag">`
+        ).join(' '); 
+
+        const identityMajorLogo = identityMajors.map(identityMajors => 
+            `<img class="flag" src="${identityMajors}.png" alt="${identityMajors.toUpperCase()} Flag">`
+        ).join(' '); 
+
+        const identityMajorLogo2 = identityMajors2.map(identityMajors2 => 
+            `<img class="flag" src="${identityMajors2}.png" alt="${identityMajors2.toUpperCase()} Flag">`
+        ).join(' '); 
+
+        const identityMajorLogo3 = identityMajors3.map(identityMajors3 => 
+            `<img class="flag" src="${identityMajors3}.png" alt="${identityMajors3.toUpperCase()} Flag">`
+        ).join(' '); 
+
+
         
        
         document.querySelector(".importFlags").innerHTML = importFlagsHTML;
         document.querySelector(".exportFlags").innerHTML = exportFlagsHTML;
         document.getElementById("countryName").innerText = countryName;
         document.getElementById("countryInfo").innerHTML = countryInfo;
+        document.querySelector(".gasimportFlags").innerHTML = importGasFlagsHTML;
+        document.querySelector(".identityTitle").innerHTML = identity[0];
+        document.querySelector(".identity2Title").innerHTML = identity[1];
+        document.querySelector(".identity3Title").innerHTML = identity[2];
+        document.querySelector(".identity1Flags").innerHTML = identity1FlagsHTML;
+        document.querySelector(".identity2Flags").innerHTML = identity2FlagsHTML;
+        document.querySelector(".identity3Flags").innerHTML = identity3FlagsHTML;
+        document.querySelector(".identity1Major").innerHTML = identityMajorLogo;
+        document.querySelector(".identity2Major").innerHTML = identityMajorLogo2;
+        document.querySelector(".identity3Major").innerHTML = identityMajorLogo3;
 
         // Set the flag image
        
@@ -125,12 +179,14 @@ const infoBox = document.getElementById("infoBox");
 document.addEventListener("click", function(event) {
     const infoBox = document.getElementById("infoBox");
     if (!event.target.closest('.allPath') && !event.target.closest('#infoBox')) {
-        infoBox.style.display = 'none'; // Hide the info box
+        infoBox.style.display = 'none';
+         // Hide the info box
         
         // Reset the fill color of the last clicked path
         if (lastClickedPath) {
             lastClickedPath.style.fill = "#ececec"; // Reset to original color
             lastClickedPath = null; // Clear the reference
+            
         }
     }
 });
