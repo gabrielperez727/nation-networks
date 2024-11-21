@@ -27,7 +27,7 @@ const accordionContent = document.querySelectorAll(".accordion-content");
 
 accordionContent.forEach((item) => {
     const oilHeader = item.querySelector(".oilHeader");
-    const gasHeader = item.querySelector(".gasHeader");
+    
 
     // Handle click for oilHeader
     oilHeader.addEventListener("click", () => {
@@ -40,16 +40,8 @@ accordionContent.forEach((item) => {
         }
     });
 
-    // Handle click for gasHeader
-    gasHeader.addEventListener("click", () => {
-        item.classList.toggle("open");
-        const gasDescription = item.querySelector(".gasdescription");
-        if (item.classList.contains("open")) {
-            gasDescription.style.maxHeight = `${gasDescription.scrollHeight}px`; // Expand to full height
-        } else {
-            gasDescription.style.maxHeight = '0px'; // Collapse
-        }
-    });
+    
+  
 });
 
 
@@ -68,9 +60,7 @@ document.querySelectorAll(".allPath").forEach(e => {
         const countryCode = e.id; 
         const countryInfo = `<strong>GDP</strong>: $${gdp[countryCode]}`; 
        
-        const importCodes = countries[countryCode]?.imports || [];
-        const exportCodes = countries[countryCode]?.exports || [];
-        const gasImport = countries[countryCode]?.gasImports || [];
+       
         const identity = countries[countryCode]?.identity || [];
         const identity1 = countries[countryCode]?.identity1 || [];
         const identity2 = countries[countryCode]?.identity2 || [];
@@ -81,17 +71,7 @@ document.querySelectorAll(".allPath").forEach(e => {
 
 
        
-        const importFlagsHTML = importCodes.map(importCode => 
-            `<img class="flag" src="./flags/${importCode}.png" alt="${importCode.toUpperCase()} Flag">`
-        ).join(' '); 
-
-        const exportFlagsHTML = exportCodes.map(exportCode => 
-            `<img class="flag" src="./flags/${exportCode}.png" alt="${exportCode.toUpperCase()} Flag">`
-        ).join(' '); 
-
-        const importGasFlagsHTML = gasImport.map(gasImport => 
-            `<img class="flag" src="./flags/${gasImport}.png" alt="${gasImport.toUpperCase()} Flag">`
-        ).join(' '); 
+     
 
         const identity1FlagsHTML = identity1.map(identity1 => 
             `<img class="flag" src="./flags/${identity1}.png" alt="${identity1.toUpperCase()} Flag">`
@@ -120,11 +100,10 @@ document.querySelectorAll(".allPath").forEach(e => {
 
         
        
-        document.querySelector(".importFlags").innerHTML = importFlagsHTML;
-        document.querySelector(".exportFlags").innerHTML = exportFlagsHTML;
+       
         document.getElementById("countryName").innerText = countryName;
         document.getElementById("countryInfo").innerHTML = countryInfo;
-        document.querySelector(".gasimportFlags").innerHTML = importGasFlagsHTML;
+       
         document.querySelector(".identityTitle").innerHTML = identity[0];
         document.querySelector(".identity2Title").innerHTML = identity[1];
         document.querySelector(".identity3Title").innerHTML = identity[2];

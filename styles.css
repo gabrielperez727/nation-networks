@@ -32,6 +32,9 @@ svg path{
 
 
 
+
+
+
 .accordion .accordion-content {
     overflow: hidden;
 }
@@ -58,9 +61,11 @@ svg path{
 .oilHeader {
     display: flex;
     padding: 5px;
-    background-color: palegoldenrod;
+    background-color: lightblue;
     border-radius: 5px;
-    
+    align-items: center;
+    justify-content: center;
+    text-align: center;
 }
 
 .accordion-content.open .description {
@@ -78,21 +83,38 @@ svg path{
     
     font-size: 20px;
     margin-top: 10px;
+    cursor: pointer;
+    
 }
 
-.imports, .exports {
+.imports {
     text-align: center;
     
-    
+    border: solid red;
     padding: 5px;
 }
 
+.gasdescription {
+    border: solid red;
+}
+.identitySection {
+    border: solid red;
+}
 .flag {
     width: 80px;
 }
 
 .flags {
     padding: 5px;
+}
+
+.identityTitle, .identity2Title, .identity3Title {
+    font-family: Arial, Helvetica, sans-serif;
+    
+}
+
+.identity1Flags {
+    padding: 15px;
 }
 
 
@@ -123,6 +145,7 @@ font-size: 20px; /* Adjust the percentage as needed */
 
 .oilIcon {
     width: 40px;
+    padding: 3px;
 }
 
 .oil {

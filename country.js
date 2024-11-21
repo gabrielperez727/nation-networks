@@ -1,7 +1,5 @@
 const countries = {
     BR: {
-        imports: ["sa", 'us', 'dz'],
-        exports: ["cn", 'us', 'es'],
         identity: ['Soybeans', 'Oil', 'Iron Ore'],
         identity1: ['cn', 'es', 'th'],
         identity2: ['cn', 'us', 'cl'],
