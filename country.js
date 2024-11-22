@@ -11,6 +11,7 @@ const countries = {
         topCompaniesLogo: ['jbs','bpb', 'val'],
         topFinance: ['Itaú Unibanco', 'Banco do Brasil', 'Banco Bradesco'],
         topFinanceLogo: ['ita', 'bdb', 'bbb'],
+        currency: ['bhs']
         
     },
     CN: {

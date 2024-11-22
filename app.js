@@ -105,6 +105,8 @@ document.querySelectorAll(".allPath").forEach(e => {
 
         const topFinanceLogos = countries[countryCode]?.topFinanceLogo || [];
 
+        const currency = countries[countryCode]?.currency || [];
+
 
 
        
@@ -142,6 +144,10 @@ document.querySelectorAll(".allPath").forEach(e => {
             `<img class="logo" src="${topCompaniesLogos}.png" alt="${topCompaniesLogos.toUpperCase()} Flag">`
         ).join(' '); 
 
+        const currencyBill = currency.map(currency => 
+            `<img class="bill" src="${currency}.png" alt="${currency.toUpperCase()} Flag">`
+        ).join(' '); 
+
        
 
 
@@ -164,6 +170,7 @@ document.querySelectorAll(".allPath").forEach(e => {
         document.querySelector(".topCompanyLogo").innerHTML = topCompanyLogo;
         document.querySelector(".topFinance").innerHTML = topFinance;
         document.querySelector(".topFinanceLogo").innerHTML = topFinanceLogo;
+        document.querySelector(".currencyBill").innerHTML = currencyBill;
        
 
         // Set the flag image
