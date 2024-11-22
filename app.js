@@ -40,8 +40,38 @@ accordionContent.forEach((item) => {
         }
     });
 
+
     
   
+});
+const accordionItems = document.querySelectorAll(".accordion-content");
+
+accordionItems.forEach((item) => {
+    const header = item.querySelector(".oilHeader"); // Find the header within the current content
+    const content = item.querySelector(".importsdiv"); // Find the specific content to show/hide
+
+    // Ensure the content exists to avoid errors
+    if (header && content) {
+        header.addEventListener("click", () => {
+            // Toggle 'open' class for current item
+            const isOpen = content.style.maxHeight && content.style.maxHeight !== "0px";
+
+            // Close all other accordion sections
+            accordionItems.forEach((otherItem) => {
+                const otherContent = otherItem.querySelector(".importsdiv");
+                if (otherContent && otherContent !== content) {
+                    otherContent.style.maxHeight = "0px"; // Collapse others
+                }
+            });
+
+            // Toggle the current section
+            if (isOpen) {
+                content.style.maxHeight = "0px"; // Collapse current
+            } else {
+                content.style.maxHeight = `${content.scrollHeight}px`; // Expand current
+            }
+        });
+    }
 });
 
 
@@ -68,6 +98,13 @@ document.querySelectorAll(".allPath").forEach(e => {
         const identityMajors = countries[countryCode]?.identityMajors || [];
         const identityMajors2 = countries[countryCode]?.identityMajors2 || [];
         const identityMajors3 = countries[countryCode]?.identityMajors3 || [];
+        const topCompanies = countries[countryCode]?.topCompanies || [];
+        const topCompaniesLogo = countries[countryCode]?.topCompaniesLogo || [];
+
+        const topFinance = countries[countryCode]?.topFinance || [];
+
+        const topFinanceLogos = countries[countryCode]?.topFinanceLogo || [];
+
 
 
        
@@ -86,16 +123,26 @@ document.querySelectorAll(".allPath").forEach(e => {
         ).join(' '); 
 
         const identityMajorLogo = identityMajors.map(identityMajors => 
-            `<img class="flag" src="${identityMajors}.png" alt="${identityMajors.toUpperCase()} Flag">`
+            `<img class="logo" src="${identityMajors}.png" alt="${identityMajors.toUpperCase()} Flag">`
         ).join(' '); 
 
         const identityMajorLogo2 = identityMajors2.map(identityMajors2 => 
-            `<img class="flag" src="${identityMajors2}.png" alt="${identityMajors2.toUpperCase()} Flag">`
+            `<img class="logo" src="${identityMajors2}.png" alt="${identityMajors2.toUpperCase()} Flag">`
         ).join(' '); 
 
         const identityMajorLogo3 = identityMajors3.map(identityMajors3 => 
-            `<img class="flag" src="${identityMajors3}.png" alt="${identityMajors3.toUpperCase()} Flag">`
+            `<img class="logo" src="${identityMajors3}.png" alt="${identityMajors3.toUpperCase()} Flag">`
         ).join(' '); 
+
+        const topCompanyLogo = topCompaniesLogo.map(topCompaniesLogo => 
+            `<img class="logo" src="${topCompaniesLogo}.png" alt="${topCompaniesLogo.toUpperCase()} Flag">`
+        ).join(' '); 
+
+        const topFinanceLogo = topFinanceLogos.map(topCompaniesLogos => 
+            `<img class="logo" src="${topCompaniesLogos}.png" alt="${topCompaniesLogos.toUpperCase()} Flag">`
+        ).join(' '); 
+
+       
 
 
         
@@ -113,6 +160,11 @@ document.querySelectorAll(".allPath").forEach(e => {
         document.querySelector(".identity1Major").innerHTML = identityMajorLogo;
         document.querySelector(".identity2Major").innerHTML = identityMajorLogo2;
         document.querySelector(".identity3Major").innerHTML = identityMajorLogo3;
+        document.querySelector(".companyTitle").innerHTML = topCompanies;
+        document.querySelector(".topCompanyLogo").innerHTML = topCompanyLogo;
+        document.querySelector(".topFinance").innerHTML = topFinance;
+        document.querySelector(".topFinanceLogo").innerHTML = topFinanceLogo;
+       
 
         // Set the flag image
        
